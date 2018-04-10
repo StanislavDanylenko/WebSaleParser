@@ -17,9 +17,8 @@ $arrayOfBuildings = array();
 $maxPage = 0;
 $currentPage = 0;
 
-$numURLS = 200;
+$numURLS = 10;
 $countParsedURLS = 0;
-
 
 
 function printArray($arr){
@@ -28,8 +27,6 @@ function printArray($arr){
      echo "$key   =   $value <br />"; 
     } 
 }
-
-
 function parseFirstPage($url, $tag, $tagForCountPage, $page = 1){
     global $maxPage, $currentPage, $countParsedURL, $arrayOfPageURLS, $numURLS;
     
@@ -101,7 +98,7 @@ function parseInnerPage($url, $tagHeader, $tagName){
     global $arrayOfBuildings, $arrayOfPageURLS;
 
     // потом удалить
-    $arrayOfPageURLS[$url] = '500 000 грн.';
+    //$arrayOfPageURLS[$url] = '500 000 грн.';
 
     $ob = new Building($url);
     $data = str_get_html(CURLrequest($url));
@@ -121,8 +118,8 @@ function parseInnerPage($url, $tagHeader, $tagName){
                 $head = (string)$tableHeader->children(0)->plaintext;
                 $text = (string)$tableHeader->children(1)->children(0)->plaintext;
                 $ob->price = $arrayOfPageURLS[$url];
-                echo $head.' -> ';
-                echo $text.'<br>';
+                //echo $head.' -> ';
+                //echo $text.'<br>';
                 switch ( mb_strtolower($head)) {
                     case 'объявление от':
                        $ob->typeSell = $text;
@@ -223,11 +220,22 @@ function parseInnerPage($url, $tagHeader, $tagName){
 
 }
 
+function parseArrayOfURLs(){
+    global $arrayOfPageURLS;
+    if (count($arrayOfPageURLS) > 0){
+        foreach ($arrayOfPageURLS as $url => $cost) {
+            parseInnerPage($url, 'table[class=item] tbody tr', 'div[class=offer-titlebox] h1');
+        }
+    }
+}
+
 //parseFirstPage('https://www.olx.ua/nedvizhimost/kvartiry-komnaty/poltava/?search%5Border%5D=filter_float_price%3Adesc', 'a[class=marginright5 link linkWithHash detailsLink]', 'span[class=item fleft] a[class=block br3 brc8 large tdnone lheight24] span');
 //printArray($arrayOfPageURLS);
 
 parseFirstPage('https://www.olx.ua/nedvizhimost/kvartiry-komnaty/poltava/?search%5Border%5D=filter_float_price%3Adesc', 'td[class=offer] table tbody]', 'span[class=item fleft] a[class=block br3 brc8 large tdnone lheight24] span');
-printArray($arrayOfPageURLS);
-parseInnerPage('https://www.olx.ua/obyavlenie/prodam-3k-kvartiru-mn-levada-IDyH3e0.html#e8dbef79ab;promoted', 'table[class=item] tbody tr', 'div[class=offer-titlebox] h1')
+//printArray($arrayOfPageURLS);
+//parseInnerPage('https://www.olx.ua/obyavlenie/prodam-3k-kvartiru-mn-levada-IDyH3e0.html#e8dbef79ab;promoted', 'table[class=item] tbody tr', 'div[class=offer-titlebox] h1')
+parseArrayOfURLs();
+//printArray($arrayOfPageURLS);
 ?>
 
