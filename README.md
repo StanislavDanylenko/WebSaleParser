@@ -1,5 +1,5 @@
 # WebSaleParser
-## ------------- Version 0.1 ---------------
+## ------------- Version 0.1 ---------------(April 09)
 ### List of files:
 - ***index.php -*** The main file, the entry point to the program, starts all other files, and uses the functionality of all the files that are connected to it.
 - ***connection.php -*** Connecting to a database.
@@ -14,4 +14,10 @@
 - Parsing the page selected in the previous step and writing the result to an array of results.
 - Displaying the results on the screen.
 
-## [see the result now](https://bossyandeks.000webhostapp.com/)
+## ------------- Version 0.1.1 -------------(April 10)
+
+### What's new:
+- ***createURL.php -*** New file for creating string for URL request to OLX.ua server from the web site fields.
+- New ***parseArrayOfURLs*** function which allows you to parse the page addresses obtained earlier by other functions.
+- Design and optimization of the code
+## [look at the result now](https://bossyandeks.000webhostapp.com/)
