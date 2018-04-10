@@ -19,7 +19,7 @@ $arrayOfBuildings = array();
 $maxPage = 0;
 $currentPage = 0;
 
-$numURLS = 10;
+$numURLS = 20;
 $countParsedURLS = 0;
 
 $URL_for_parsing = '';
@@ -219,7 +219,7 @@ function parseInnerPage($url, $tagHeader, $tagName){
     }
 
     //$res = $ob->__toString();
-    echo $ob;
+    //echo $ob;
     array_push($arrayOfBuildings, $ob);
 
 }
@@ -233,6 +233,88 @@ function parseArrayOfURLs(){
     }
 }
 
+function printTable($objectArray){
+
+        echo '<table border="1"';
+
+            echo '<tr>';
+
+                echo '<th>'.'Адрес'.'</th>';
+                echo '<th>'.'Заголовок'.'</th>';
+                echo '<th>'.'Объявление от'.'</th>';
+                echo '<th>'.'Цена'.'</th>';
+                echo '<th>'.'Комиссия'.'</th>';
+                echo '<th>'.'Тип объекта'.'</th>';
+                echo '<th>'.'Тип дома'.'</th>';
+                echo '<th>'.'Этаж'.'</th>';
+                echo '<th>'.'Этажность'.'</th>';
+                echo '<th>'.'Общая площадь'.'</th>';
+                echo '<th>'.'Площадь кухни'.'</th>';
+                echo '<th>'.'Тип стен'.'</th>';
+                echo '<th>'.'Количество комнат'.'</th>';
+                echo '<th>'.'Планировка'.'</th>';
+                echo '<th>'.'Санузел'.'</th>';
+                echo '<th>'.'Отопление'.'</th>';
+                echo '<th>'.'Ремонт'.'</th>';
+                echo '<th>'.'Меблирование'.'</th>';
+                echo '<th>'.'Бытовая техника'.'</th>';
+                echo '<th>'.'Мультимедиа'.'</th>';
+                echo '<th>'.'Комфорт'.'</th>';
+                echo '<th>'.'Коммуникации'.'</th>';
+                echo '<th>'.'Инфраструктура'.'</th>';
+                echo '<th>'.'Ландшафт'.'</th>';
+                echo '<th>'.'Описание'.'</th>';
+                echo '<th>'.'Расстояние к ближайшему городу'.'</th>';
+                echo '<th>'.'Площадь участка'.'</th>';
+                echo '<th>'.'Кадастровый номер'.'</th>';
+                echo '<th>'.'Внешнее утепление стен'.'</th>';
+                echo '<th>'.'Тип кровли'.'</th>';
+                echo '<th>'.'Год постройки'.'</th>';
+
+            echo '</tr>';
+
+                foreach ($objectArray as $ob) {
+                    echo '<tr>';
+                    echo '<td>'.$ob->URL.'</td>';
+                    echo '<td>'.$ob->headline.'</td>';
+                    echo '<td>'.$ob->typeSell.'</td>';
+                    echo '<td>'.$ob->price.'</td>';
+                    echo '<td>'.$ob->lessPrice.'</td>';
+                    echo '<td>'.$ob->buildingType.'</td>';
+                    echo '<td>'.$ob->houseType.'</td>';
+                    echo '<td>'.$ob->floorNumber.'</td>';
+                    echo '<td>'.$ob->floorCount.'</td>';
+                    echo '<td>'.$ob->commonSquare.'</td>';
+                    echo '<td>'.$ob->kitchenSquare.'</td>';
+                    echo '<td>'.$ob->wallType.'</td>';
+                    echo '<td>'.$ob->roomCount.'</td>';
+                    echo '<td>'.$ob->layout.'</td>';
+                    echo '<td>'.$ob->tuilet.'</td>';
+                    echo '<td>'.$ob->heating.'</td>';
+                    echo '<td>'.$ob->repear.'</td>';
+                    echo '<td>'.$ob->furniture.'</td>';
+                    echo '<td>'.$ob->devices.'</td>';
+                    echo '<td>'.$ob->multimedia.'</td>';
+                    echo '<td>'.$ob->comfort.'</td>';
+                    echo '<td>'.$ob->communication.'</td>';
+                    echo '<td>'.$ob->infrastructure.'</td>';
+                    echo '<td>'.$ob->landshaft.'</td>';
+                    echo '<td>'.$ob->notation.'</td>';
+
+                    echo '<td>'.$ob->lengthsToCity.'</td>';
+                    echo '<td>'.$ob->landSquare.'</td>';
+                    echo '<td>'.$ob->cadastralNumber.'</td>';
+                    echo '<td>'.$ob->outHeatingWall.'</td>';
+                    echo '<td>'.$ob->roofType.'</td>';
+                    echo '<td>'.$ob->builtYear.'</td>';
+
+                    echo '</tr>';
+                }
+                echo '</table>';
+
+        
+    }
+
 //parseFirstPage('https://www.olx.ua/nedvizhimost/kvartiry-komnaty/poltava/?search%5Border%5D=filter_float_price%3Adesc', 'a[class=marginright5 link linkWithHash detailsLink]', 'span[class=item fleft] a[class=block br3 brc8 large tdnone lheight24] span');
 //printArray($arrayOfPageURLS);
 
@@ -240,6 +322,7 @@ parseFirstPage('https://www.olx.ua/nedvizhimost/kvartiry-komnaty/poltava/?search
 //printArray($arrayOfPageURLS);
 //parseInnerPage('https://www.olx.ua/obyavlenie/prodam-3k-kvartiru-mn-levada-IDyH3e0.html#e8dbef79ab;promoted', 'table[class=item] tbody tr', 'div[class=offer-titlebox] h1')
 parseArrayOfURLs();
+printTable($arrayOfBuildings);
 //printArray($arrayOfPageURLS);
 ?>
 
