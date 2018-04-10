@@ -4,6 +4,8 @@ require_once 'simple_html_dom.php';
 require_once 'BuildingClass.php';
 require_once 'curl.php';
 require_once 'oldFunc.php';
+require_once 'createURL.php';
+
  
  // подключаемся к серверу БД
 $link = mysqli_connect($host, $user, $password, $database) 
@@ -20,7 +22,9 @@ $currentPage = 0;
 $numURLS = 10;
 $countParsedURLS = 0;
 
+$URL_for_parsing = '';
 
+// функции
 function printArray($arr){
     echo 'Перебрано результатов '.count($arr).'<br>';
     foreach($arr as $key => $value) { 
