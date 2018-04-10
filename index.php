@@ -1,4 +1,9 @@
 <?php
+//ob_start();
+
+session_start();
+$_SESSION['name'] = 'cookie.txt';
+
 require_once 'connection.php'; // подключаем скрипт
 require_once 'simple_html_dom.php';
 require_once 'BuildingClass.php';
@@ -6,7 +11,6 @@ require_once 'curl.php';
 require_once 'oldFunc.php';
 require_once 'createURL.php';
 
- 
  // подключаемся к серверу БД
 $link = mysqli_connect($host, $user, $password, $database) 
     or die("Ошибка " . mysqli_error($link));
@@ -19,7 +23,7 @@ $arrayOfBuildings = array();
 $maxPage = 0;
 $currentPage = 0;
 
-$numURLS = 20;
+$numURLS = 10;
 $countParsedURLS = 0;
 
 $URL_for_parsing = '';
@@ -311,8 +315,16 @@ function printTable($objectArray){
                     echo '</tr>';
                 }
                 echo '</table>';
+    }
 
-        
+    function openWindow(){
+        echo('
+                <script type="text/javascript">
+                window.onload=function(e)
+                {
+                window.open("download.php");
+                }
+                </script>');
     }
 
 //parseFirstPage('https://www.olx.ua/nedvizhimost/kvartiry-komnaty/poltava/?search%5Border%5D=filter_float_price%3Adesc', 'a[class=marginright5 link linkWithHash detailsLink]', 'span[class=item fleft] a[class=block br3 brc8 large tdnone lheight24] span');
@@ -323,6 +335,7 @@ parseFirstPage('https://www.olx.ua/nedvizhimost/kvartiry-komnaty/poltava/?search
 //parseInnerPage('https://www.olx.ua/obyavlenie/prodam-3k-kvartiru-mn-levada-IDyH3e0.html#e8dbef79ab;promoted', 'table[class=item] tbody tr', 'div[class=offer-titlebox] h1')
 parseArrayOfURLs();
 printTable($arrayOfBuildings);
+openWindow();
+//file_force_download('cookie.txt');
 //printArray($arrayOfPageURLS);
 ?>
-
