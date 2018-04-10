@@ -317,7 +317,7 @@ function printTable($objectArray){
                 echo '</table>';
     }
 
-    function openWindow(){
+function openWindow(){
         echo('
                 <script type="text/javascript">
                 window.onload=function(e)
@@ -327,6 +327,12 @@ function printTable($objectArray){
                 </script>');
     }
 
+function getFileName($format){
+    $ip = (string)$_SERVER["REMOTE_ADDR"];
+    $ip = str_replace(".","",$ip);
+    $ip .= microtime();
+    echo $ip.$format;
+}
 //parseFirstPage('https://www.olx.ua/nedvizhimost/kvartiry-komnaty/poltava/?search%5Border%5D=filter_float_price%3Adesc', 'a[class=marginright5 link linkWithHash detailsLink]', 'span[class=item fleft] a[class=block br3 brc8 large tdnone lheight24] span');
 //printArray($arrayOfPageURLS);
 
