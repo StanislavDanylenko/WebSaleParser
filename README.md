@@ -19,5 +19,6 @@
 ### What's new:
 - ***createURL.php -*** New file for creating string for URL request to OLX.ua server from the web site fields.
 - New ***parseArrayOfURLs*** function which allows you to parse the page addresses obtained earlier by other functions.
-- Design and optimization of the code
+- Design and optimization of the code.
+- New ***printTable*** function which allows you to print thr result of parsing with a table.
 ## [look at the result now](https://bossyandeks.000webhostapp.com/)
