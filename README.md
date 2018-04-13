@@ -22,7 +22,7 @@
 - Design and optimization of the code.
 - New ***printTable*** function which allows you to print thr result of parsing with a table.
 
-## ------------- Version 0.2 -------------(April 10)
+## ------------- Version 0.2 -------------(April 12)
 
 ### What's new:
 - ***download.php -*** New file for downloading Excel files from the server.
