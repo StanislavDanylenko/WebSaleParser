@@ -29,4 +29,5 @@
 - ***excel.php -*** New file for creating Excel files by the request.
 - Some functions became not actual, some began to work differently, but both versions still remain in the project.
 - Design and optimization of the code.
+- You need PHPExcel library for correct program work.
 ## [look at the result now](https://bossyandeks.000webhostapp.com/)
