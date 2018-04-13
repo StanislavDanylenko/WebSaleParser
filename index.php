@@ -10,6 +10,7 @@ require_once 'BuildingClass.php';
 require_once 'curl.php';
 require_once 'oldFunc.php';
 require_once 'createURL.php';
+require_once 'excel.php';
 
  // подключаемся к серверу БД
 $link = mysqli_connect($host, $user, $password, $database) 
@@ -23,7 +24,7 @@ $arrayOfBuildings = array();
 $maxPage = 0;
 $currentPage = 0;
 
-$numURLS = 10;
+$numURLS = 5;
 $countParsedURLS = 0;
 
 $URL_for_parsing = '';
@@ -318,16 +319,17 @@ function printTable($objectArray){
     }
 
     function openWindow(){
-        echo('
-                <script type="text/javascript">
-                window.onload=function(e)
-                {
+        echo('<script type="text/javascript">
+           window.onload=function(e){
                 window.open("download.php");
-                }
-                </script>');
+           }
+            </script>');
     }
 
 function getFileName($format){
+    /*$ip = (string)getIP();
+    $ip .= (string)microtime(true);
+    $ip = str_replace(".","",$ip);*/
     $ip = md5(uniqid(rand(),1));
     echo $ip.$format;
 }
@@ -340,9 +342,11 @@ parseFirstPage('https://www.olx.ua/nedvizhimost/kvartiry-komnaty/poltava/?search
 //printArray($arrayOfPageURLS);
 //parseInnerPage('https://www.olx.ua/obyavlenie/prodam-3k-kvartiru-mn-levada-IDyH3e0.html#e8dbef79ab;promoted', 'table[class=item] tbody tr', 'div[class=offer-titlebox] h1')
 parseArrayOfURLs();
-printTable($arrayOfBuildings);
+//printTable($arrayOfBuildings);
+$_SESSION['array'] = $arrayOfBuildings;
 openWindow();
-getFileName('.txt');
+//getFileName('.txt');
+//getExcel('Blablabla', $arrayOfBuildings);
 //file_force_download('cookie.txt');
 //printArray($arrayOfPageURLS);
 ?>

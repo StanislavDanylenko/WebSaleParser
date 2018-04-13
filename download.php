@@ -1,7 +1,9 @@
 <?php
-
+    require_once 'excel.php';
+    require_once 'BuildingClass.php';
     session_start();
     $file = $_SESSION['name'];
+    $arr =  $_SESSION['array'];
     
     function file_force_download($file) {
       if (file_exists($file)) {
@@ -13,9 +15,12 @@
         header('Pragma: public');
         header('Content-Length: ' . filesize($file));
         readfile($file);
-        exit;
+        //exit;
+        echo('<script type="text/javascript">
+           window.close();
+            </script>');
         }
     }
-    
-    file_force_download($file);
+     getExcel('Blablabla', $arr);
+    //file_force_download($file);
 ?>
