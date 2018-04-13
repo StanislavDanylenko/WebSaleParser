@@ -21,4 +21,12 @@
 - New ***parseArrayOfURLs*** function which allows you to parse the page addresses obtained earlier by other functions.
 - Design and optimization of the code.
 - New ***printTable*** function which allows you to print thr result of parsing with a table.
+
+## ------------- Version 0.2 -------------(April 10)
+
+### What's new:
+- ***download.php -*** New file for downloading Excel files from the server.
+- ***excel.php -*** New file for creating Excel files by the request.
+- Some functions became not actual, some began to work differently, but both versions still remain in the project.
+- Design and optimization of the code.
 ## [look at the result now](https://bossyandeks.000webhostapp.com/)
