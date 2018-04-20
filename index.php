@@ -24,7 +24,7 @@ $arrayOfBuildings = array();
 $maxPage = 0;
 $currentPage = 0;
 
-$numURLS = 5;
+$numURLS = 20;
 $countParsedURLS = 0;
 
 $URL_for_parsing = '';
@@ -58,7 +58,7 @@ function parseFirstPage($url, $tag, $tagForCountPage, $page = 1){
                     $key = $res->children(0)->children(0)->children(1)->children(0)->children(0)->children(0)->href;
                     $val = $res->children(0)->children(0)->children(2)->children(0)->children(0)->children(0)->plaintext;
                     if (!array_key_exists($key, $arrayOfPageURLS)){
-                        $arrayOfPageURLS[$key] = $val;
+                        $arrayOfPageURLS[$key] = trim($val);
                         $countParsedURL++;
                     }
                 }
@@ -87,7 +87,7 @@ function parseNextPage($url, $tag, $page){
                     $key = $res->children(0)->children(0)->children(1)->children(0)->children(0)->children(0)->href;
                     $val = $res->children(0)->children(0)->children(2)->children(0)->children(0)->children(0)->plaintext;
                     if (!array_key_exists($key, $arrayOfPageURLS)){
-                        $arrayOfPageURLS[$key] = $val;
+                        $arrayOfPageURLS[$key] = trim($val);
                         $countParsedURL++;
                     }
                 }
@@ -117,6 +117,15 @@ function parseInnerPage($url, $tagHeader, $tagName){
         if (count($data->find($tagName))){
             foreach($data->find($tagName) as $HEADER){
                 $res = $HEADER->plaintext;
+                $res = preg_replace("/[\t\r\n]+/",' ', $res);
+                $res = preg_replace('/ {2,}/',' ',$res);  
+                $res = str_replace('&amp;', '&', $res);
+                $res = str_replace('&nbsp;', ' ', $res);
+                $first = mb_substr($res, 0, 1, 'UTF-8');
+                $last = mb_substr($res, mb_strlen($res) - 2, 1, 'UTF-8');
+                if ( strcmp($first, $last)) {
+                    $res = mb_substr($res, 1, strlen($res) - 1, 'UTF-8');
+                }
                 $ob->headline = $res;
             }
         }
@@ -125,10 +134,18 @@ function parseInnerPage($url, $tagHeader, $tagName){
             foreach($data->find($tagHeader) as $tableHeader){
                 //$res = $tableHeader;
                 $head = (string)$tableHeader->children(0)->plaintext;
-                $text = (string)$tableHeader->children(1)->children(0)->plaintext;
+                $textT = (string)$tableHeader->children(1)->children(0)->plaintext;
+                $textT = preg_replace("/[\t\r\n]+/",' ', $textT);
+                $textT = preg_replace('/ {2,}/',' ',$textT);  
+                $textT = str_replace('&amp;', '&', $textT);
+                $text = str_replace('&nbsp;', ' ', $textT);
+                $first = mb_substr($text, 0, 1, 'UTF-8');
+                $last = mb_substr($text, mb_strlen($text) - 2, 1, 'UTF-8');
+                if ( strcmp($first, $last)) {
+                    $text = mb_substr($text, 1, strlen($text) - 1, 'UTF-8');
+                }
                 $ob->price = $arrayOfPageURLS[$url];
-                //echo $head.' -> ';
-                //echo $text.'<br>';
+ 
                 switch ( mb_strtolower($head)) {
                     case 'объявление от':
                        $ob->typeSell = $text;
@@ -327,9 +344,6 @@ function printTable($objectArray){
     }
 
 function getFileName($format){
-    /*$ip = (string)getIP();
-    $ip .= (string)microtime(true);
-    $ip = str_replace(".","",$ip);*/
     $ip = md5(uniqid(rand(),1));
     echo $ip.$format;
 }
