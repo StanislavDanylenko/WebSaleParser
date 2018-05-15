@@ -138,7 +138,7 @@ function parseInnerPage($url, $tagHeader, $tagName, $tagDescription, $tagPhoto, 
         }
         if (count($data->find($tagPhoto))){
             foreach($data->find($tagPhoto) as $foto){
-                $ob->foto = $foto->src;
+                $ob->photo = $foto->src;
             }
         }
         if (count($data->find($tagRating))){
@@ -389,7 +389,7 @@ function printTableTestBigTableAttributes($objectArray){
         echo '<tr>';
             echo '<td>'.$ob->URL.'</td>';
             echo '<td>'.$ob->description.'</td>';
-            echo '<td>'.$ob->foto.'</td>';
+            echo '<td>'.$ob->photo.'</td>';
             echo '<td>'.$ob->rating.'</td>';
         echo '</tr>';
     }
@@ -423,13 +423,14 @@ parseFirstPage('https://www.olx.ua/nedvizhimost/kvartiry-komnaty/poltava/?search
 //printArray($arrayOfPageURLS);
 //parseInnerPage('https://www.olx.ua/obyavlenie/prodam-3k-kvartiru-mn-levada-IDyH3e0.html#e8dbef79ab;promoted', 'table[class=item] tbody tr', 'div[class=offer-titlebox] h1')
 parseArrayOfURLs();
-//printTable1($arrayOfBuildings);
+printTable1($arrayOfBuildings);
 $_SESSION['array'] = $arrayOfBuildings;
 //openWindow();
 //getFileName('.txt');
 //getExcel('Blablabla', $arrayOfBuildings);
 //file_force_download('cookie.txt');
-printArray($arrayOfPageURLS);
-usort($arrayOfBuildings, "sortArrayByRating");
-printArray($arrayOfBuildings);
+//printArray($arrayOfPageURLS);
+//usort($arrayOfBuildings, "sortArrayByRating");
+//printArray($arrayOfBuildings);
+echo json_encode($arrayOfBuildings);
 ?>
