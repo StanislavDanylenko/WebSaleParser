@@ -37,6 +37,10 @@ class Building
     public $roofType;
     public $builtYear;
 
+    public $description;
+    public $photo;
+    public $rating;
+
 
     function __construct($url)
     {
@@ -73,6 +77,10 @@ class Building
          $this->outHeatingWall = "-";
          $this->roofType = "-";
          $this->builtYear = "-";
+
+        $this->description = "-";
+        $this->photo = "-";
+        $this->rating = "-";
     }
 
     public function __toString(){
@@ -107,7 +115,11 @@ class Building
          (string)$this->cadastralNumber.'<br>'.
          (string)$this->outHeatingWall.'<br>'.
          (string)$this->roofType.'<br>'.
-         (string)$this->builtYear;
+         (string)$this->builtYear .'<br>'.
+
+        (string)$this->description.'<br>'.
+        (string)$this->photo.'<br>'.
+        (string)$this->rating .'<br>';
     }
 }
 ?>

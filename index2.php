@@ -36,6 +36,7 @@ function printArray($arr){
      echo "$key   =   $value <br />"; 
     } 
 }
+
 function parseFirstPage($url, $tag, $tagForCountPage, $page = 1){
     global $maxPage, $currentPage, $countParsedURL, $arrayOfPageURLS, $numURLS;
     
@@ -102,7 +103,7 @@ function parseNextPage($url, $tag, $page){
     }
 }
 
-function parseInnerPage($url, $tagHeader, $tagName){
+function parseInnerPage($url, $tagHeader, $tagName, $tagDescription, $tagPhoto, $tagRating){
 
     global $arrayOfBuildings, $arrayOfPageURLS;
 
@@ -127,6 +128,22 @@ function parseInnerPage($url, $tagHeader, $tagName){
                     $res = mb_substr($res, 1, strlen($res) - 1, 'UTF-8');
                 }
                 $ob->headline = $res;
+            }
+        }
+// тестовый блок
+        if (count($data->find($tagDescription))){
+            foreach($data->find($tagDescription) as $desc){
+                $ob->description = $desc->innertext;
+            }
+        }
+        if (count($data->find($tagPhoto))){
+            foreach($data->find($tagPhoto) as $foto){
+                $ob->foto = $foto->src;
+            }
+        }
+        if (count($data->find($tagRating))){
+            foreach($data->find($tagRating) as $rating){
+                $ob->rating = $rating->innertext;
             }
         }
 
@@ -250,7 +267,11 @@ function parseArrayOfURLs(){
     global $arrayOfPageURLS;
     if (count($arrayOfPageURLS) > 0){
         foreach ($arrayOfPageURLS as $url => $cost) {
-            parseInnerPage($url, 'table[class=item] tbody tr', 'div[class=offer-titlebox] h1');
+            parseInnerPage($url, 'table[class=item] tbody tr',
+                'div[class=offer-titlebox] h1',
+                'div[id=textContent] p',
+                'div[id=photo-gallery-opener] img',
+                'div[id=offerbottombar] div[class=pdingtop10] strong');
         }
     }
 }
@@ -335,25 +356,47 @@ function printTable($objectArray){
                 echo '</table>';
     }
     
-    function printTable1($objectArray){
+function printTable1($objectArray){
 
-        echo '<table border="1" class="table-dark"';
+    echo '<table border="1" class="table-dark"';
 
-            echo '<tr>';
-                echo '<th>'.'Адрес'.'</th>';
-                echo '<th>'.'Цена'.'</th>';
-            echo '</tr>';
+        echo '<tr>';
+            echo '<th>'.'Адрес'.'</th>';
+            echo '<th>'.'Цена'.'</th>';
+        echo '</tr>';
 
-        foreach ($objectArray as $ob) {
-            echo '<tr>';
-                echo '<td>'.$ob->URL.'</td>';
-                echo '<td>'.$ob->price.'</td>';
-            echo '</tr>';
-        }
-            echo '</table>';
+    foreach ($objectArray as $ob) {
+        echo '<tr>';
+            echo '<td>'.$ob->URL.'</td>';
+            echo '<td>'.$ob->price.'</td>';
+        echo '</tr>';
     }
+        echo '</table>';
+}
 
-    function openWindow(){
+function printTableTestBigTableAttributes($objectArray){
+
+    echo '<table border="1" class="table-dark"';
+
+    echo '<tr>';
+    echo '<th>'.'Адрес'.'</th>';
+    echo '<th>'.'Описание'.'</th>';
+    echo '<th>'.'Фото'.'</th>';
+    echo '<th>'.'Рейтинг'.'</th>';
+    echo '</tr>';
+
+    foreach ($objectArray as $ob) {
+        echo '<tr>';
+            echo '<td>'.$ob->URL.'</td>';
+            echo '<td>'.$ob->description.'</td>';
+            echo '<td>'.$ob->foto.'</td>';
+            echo '<td>'.$ob->rating.'</td>';
+        echo '</tr>';
+    }
+    echo '</table>';
+}
+
+function openWindow(){
         echo('<script type="text/javascript">
            window.onload=function(e){
                 window.open("download.php");
