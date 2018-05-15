@@ -70,4 +70,9 @@ function parseNextPageOld($url, $tag, $page){
     }
 }
 
+function getFileName($format){
+    $ip = md5(uniqid(rand(),1));
+    echo $ip.$format;
+}
+
 ?>
