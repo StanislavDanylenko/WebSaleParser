@@ -3,6 +3,7 @@
 
 session_start();
 $_SESSION['name'] = 'cookie.txt';
+echo $_SESSION['test'];
 
 require_once 'connection.php'; // подключаем скрипт
 require_once 'simple_html_dom.php';
@@ -16,7 +17,6 @@ require_once 'excel.php';
 $link = mysqli_connect($host, $user, $password, $database) 
     or die("Ошибка " . mysqli_error($link));
 
-
 // глобальные переменные
 $arrayOfPageURLS = array();
 $arrayOfBuildings = array();
@@ -24,7 +24,7 @@ $arrayOfBuildings = array();
 $maxPage = 0;
 $currentPage = 0;
 
-$numURLS = 20;
+$numURLS = 5;
 $countParsedURLS = 0;
 
 $URL_for_parsing = '';
@@ -68,7 +68,7 @@ function parseFirstPage($url, $tag, $tagForCountPage, $page = 1){
             }
             $currentPage = $page + 1;
             
-            if ($countParsedURL < $numURLS && $currentPage < $maxPage){
+            if ($countParsedURL < $numURLS && $currentPage <= $maxPage){
                 parseNextPage($url, $tag, $currentPage);
             }
         }
@@ -96,7 +96,7 @@ function parseNextPage($url, $tag, $page){
             }
         }
         $currentPage = $currentPage + 1;
-        if ($countParsedURL < $numURLS && $currentPage < $maxPage){
+        if ($countParsedURL < $numURLS && $currentPage <= $maxPage){
             parseNextPage($url, $tag, $currentPage);
         }
     }
@@ -334,6 +334,24 @@ function printTable($objectArray){
                 }
                 echo '</table>';
     }
+    
+    function printTable1($objectArray){
+
+        echo '<table border="1" class="table-dark"';
+
+            echo '<tr>';
+                echo '<th>'.'Адрес'.'</th>';
+                echo '<th>'.'Цена'.'</th>';
+            echo '</tr>';
+
+        foreach ($objectArray as $ob) {
+            echo '<tr>';
+                echo '<td>'.$ob->URL.'</td>';
+                echo '<td>'.$ob->price.'</td>';
+            echo '</tr>';
+        }
+            echo '</table>';
+    }
 
     function openWindow(){
         echo('<script type="text/javascript">
@@ -356,9 +374,9 @@ parseFirstPage('https://www.olx.ua/nedvizhimost/kvartiry-komnaty/poltava/?search
 //printArray($arrayOfPageURLS);
 //parseInnerPage('https://www.olx.ua/obyavlenie/prodam-3k-kvartiru-mn-levada-IDyH3e0.html#e8dbef79ab;promoted', 'table[class=item] tbody tr', 'div[class=offer-titlebox] h1')
 parseArrayOfURLs();
-//printTable($arrayOfBuildings);
+printTable1($arrayOfBuildings);
 $_SESSION['array'] = $arrayOfBuildings;
-openWindow();
+//openWindow();
 //getFileName('.txt');
 //getExcel('Blablabla', $arrayOfBuildings);
 //file_force_download('cookie.txt');

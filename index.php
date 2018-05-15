@@ -10,7 +10,6 @@ session_start();
 	<title>Document</title>
 	<link rel="stylesheet" href="bootstrap.min.css">
 	<link rel="stylesheet" href="style.css">
-	<!-- ДЛЯ AJAX ЗАПРОСА -->
 	<script type="text/javascript" src="jquery.js"></script>
 	<script type="text/javascript">
 	    function loadEx(){
@@ -40,7 +39,6 @@ session_start();
     });
     });
     </script>
-    <!--  AJAX ЗАПРОС -->
 </head>
 <body>
 	<div class="wrapper container-fluid">
@@ -736,13 +734,11 @@ session_start();
 						</div>	
 					</form>
 				</div>
-				<!--  PHP ВСТАВКА -->
 				<?php 
 					if(isset($_POST['myActionName'])){
                         include 'index2.php';
                     } 
                 ?>
-                <!--  -->
                 <section id="q"></section>
 			</section>
 			<section>	
@@ -800,6 +796,8 @@ session_start();
 						</section>
 					</div>
 					<div class="container mt-4 text-center">
+						<!--<button class="btn btn-dark btn-lg" type="button" name="hello">Подробнее
+						</button>-->
 				<input type="button" class="btn btn-dark btn-lg" value="Скачать" name="hello" OnClick="loadEx();">
 					</div>
 				</div>
