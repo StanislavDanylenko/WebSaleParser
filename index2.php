@@ -409,6 +409,12 @@ function getFileName($format){
     echo $ip.$format;
 }
 
+function sortArrayByRating(Building $b1, Building $b2) {
+    if ($b1->rating > $b2->rating) {
+        return -1;
+    } else return 1;
+}
+
 
 //parseFirstPage('https://www.olx.ua/nedvizhimost/kvartiry-komnaty/poltava/?search%5Border%5D=filter_float_price%3Adesc', 'a[class=marginright5 link linkWithHash detailsLink]', 'span[class=item fleft] a[class=block br3 brc8 large tdnone lheight24] span');
 //printArray($arrayOfPageURLS);
@@ -417,11 +423,13 @@ parseFirstPage('https://www.olx.ua/nedvizhimost/kvartiry-komnaty/poltava/?search
 //printArray($arrayOfPageURLS);
 //parseInnerPage('https://www.olx.ua/obyavlenie/prodam-3k-kvartiru-mn-levada-IDyH3e0.html#e8dbef79ab;promoted', 'table[class=item] tbody tr', 'div[class=offer-titlebox] h1')
 parseArrayOfURLs();
-printTable1($arrayOfBuildings);
+//printTable1($arrayOfBuildings);
 $_SESSION['array'] = $arrayOfBuildings;
 //openWindow();
 //getFileName('.txt');
 //getExcel('Blablabla', $arrayOfBuildings);
 //file_force_download('cookie.txt');
-//printArray($arrayOfPageURLS);
+printArray($arrayOfPageURLS);
+usort($arrayOfBuildings, "sortArrayByRating");
+printArray($arrayOfBuildings);
 ?>
