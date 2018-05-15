@@ -29,6 +29,10 @@ session_start();
             //в перменной data мы получим ответ от скрипта
             //document.body.innerHTML+=data;
             document.getElementById("q").innerHTML = data;
+                /*/!*var arr = eval(data);
+                Console.log(arr);*!/
+                var jsonRes = JSON.parse(data.responseText);
+                alert(jsonRes.photo)*/
         },
         error:function (xhr, ajaxOptions, thrownError){
         //если ошибка аякса, то выведем ее

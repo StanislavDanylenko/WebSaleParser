@@ -24,7 +24,7 @@ $arrayOfBuildings = array();
 $maxPage = 0;
 $currentPage = 0;
 
-$numURLS = 5;
+$numURLS = 20;
 $countParsedURLS = 0;
 
 $URL_for_parsing = '';
@@ -133,7 +133,10 @@ function parseInnerPage($url, $tagHeader, $tagName, $tagDescription, $tagPhoto, 
 // тестовый блок
         if (count($data->find($tagDescription))){
             foreach($data->find($tagDescription) as $desc){
-                $ob->description = $desc->innertext;
+                $res = $desc->innertext;
+                $res = preg_replace("/br/um","",$res);
+                $res = preg_replace("/[^a-zA-ZА-Яа-я0-9\s\-\_\.\,ёЁЇїІіЄєҐґ\!\?]/um","",$res);
+                $ob->description = $res;
             }
         }
         if (count($data->find($tagPhoto))){
