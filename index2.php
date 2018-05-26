@@ -138,6 +138,9 @@ function parseInnerPage($url, $tagHeader, $tagName, $tagDescription, $tagPhoto, 
                 $res = preg_replace("/br/um","",$res);
                 $res = preg_replace("/\\t/um","",$res);
                 $res = preg_replace("/[^a-zA-ZА-Яа-я0-9\s\-\_\.\,ёЁЇїІіЄєҐґ\!\?]/um","",$res);
+                $res = preg_replace("/span.+?[\.\,]/um","",$res);
+                $res = preg_replace("/quot/um","",$res);
+                $res = preg_replace("/\\a?u\d+/um","",$res);
                 $ob->description = $res;
             }
         }
