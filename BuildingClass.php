@@ -40,6 +40,9 @@ class Building
     public $description;
     public $photo;
     public $rating;
+    
+    public $moneyType;
+    public $moneyValue;
 
 
     function __construct($url)
@@ -81,6 +84,8 @@ class Building
         $this->description = "-";
         $this->photo = "-";
         $this->rating = "-";
+        $this->moneyType = "UAH";
+        $this->moneyValue = "0";
     }
 
     public function __toString(){
@@ -119,7 +124,9 @@ class Building
 
         (string)$this->description.'<br>'.
         (string)$this->photo.'<br>'.
-        (string)$this->rating .'<br>';
+        (string)$this->rating .'<br>'.
+        (string)$this->moneyType.'<br>'.
+        (string)$this->moneyValue;
     }
 }
 ?>

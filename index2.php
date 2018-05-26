@@ -3,7 +3,8 @@
 
 session_start();
 $_SESSION['name'] = 'cookie.txt';
-echo $_SESSION['test'];
+$_SESSION['moneyType'] = 'UAH';
+//echo $_SESSION['test'];
 
 require_once 'connection.php'; // подключаем скрипт
 require_once 'simple_html_dom.php';
@@ -24,7 +25,7 @@ $arrayOfBuildings = array();
 $maxPage = 0;
 $currentPage = 0;
 
-$numURLS = 20;
+$numURLS = 5;
 $countParsedURLS = 0;
 
 $URL_for_parsing = '';
@@ -51,7 +52,7 @@ function parseFirstPage($url, $tag, $tagForCountPage, $page = 1){
             }
         }
         $maxPage = $res;
-        echo 'Количество страниц: '.$res.'<br>';
+        //echo 'Количество страниц: '.$res.'<br>';
 
         if(count($data->find($tag))){
             foreach($data->find($tag) as $res){
@@ -135,6 +136,7 @@ function parseInnerPage($url, $tagHeader, $tagName, $tagDescription, $tagPhoto, 
             foreach($data->find($tagDescription) as $desc){
                 $res = $desc->innertext;
                 $res = preg_replace("/br/um","",$res);
+                $res = preg_replace("/\\t/um","",$res);
                 $res = preg_replace("/[^a-zA-ZА-Яа-я0-9\s\-\_\.\,ёЁЇїІіЄєҐґ\!\?]/um","",$res);
                 $ob->description = $res;
             }
@@ -165,6 +167,9 @@ function parseInnerPage($url, $tagHeader, $tagName, $tagDescription, $tagPhoto, 
                     $text = mb_substr($text, 1, strlen($text) - 1, 'UTF-8');
                 }
                 $ob->price = $arrayOfPageURLS[$url];
+                // указать тип валюты с запроса
+                $ob->moneyType = $_SESSION['moneyType'];
+                $ob->moneyValue = preg_replace("/[^0-9]/", '', $arrayOfPageURLS[$url]);
 
                 switch ( mb_strtolower($head)) {
                     case 'объявление от':
@@ -353,6 +358,8 @@ function printTable($objectArray){
         echo '<td>'.$ob->outHeatingWall.'</td>';
         echo '<td>'.$ob->roofType.'</td>';
         echo '<td>'.$ob->builtYear.'</td>';
+        echo '<td>'.$ob->moneyType.'</td>';
+        echo '<td>'.$ob->moneyValue.'</td>';
 
         echo '</tr>';
     }
@@ -423,16 +430,21 @@ function createJSON() {
 
 parseFirstPage('https://www.olx.ua/nedvizhimost/kvartiry-komnaty/poltava/?search%5Border%5D=filter_float_price%3Adesc', 'td[class=offer] table tbody]', 'span[class=item fleft] a[class=block br3 brc8 large tdnone lheight24] span');
 //printArray($arrayOfPageURLS);
-//parseInnerPage('https://www.olx.ua/obyavlenie/prodam-3k-kvartiru-mn-levada-IDyH3e0.html#e8dbef79ab;promoted', 'table[class=item] tbody tr', 'div[class=offer-titlebox] h1')
+//$arrayOfPageURLS['https://www.olx.ua/obyavlenie/srochno-sobstvennik-sdan-1-k-kv-ul-perspektivnaya-11-m-n-sadovyy-IDl9aQe.html#65b8e63905;promoted'] = '50000';
+//parseInnerPage('https://www.olx.ua/obyavlenie/srochno-sobstvennik-sdan-1-k-kv-ul-perspektivnaya-11-m-n-sadovyy-IDl9aQe.html#65b8e63905;promoted', 'table[class=item] tbody tr',
+//                'div[class=offer-titlebox] h1',
+//                'div[id=textContent] p',
+//                'div[id=photo-gallery-opener] img',
+//                'div[id=offerbottombar] div[class=pdingtop10] strong');
 parseArrayOfURLs();
-printTable1($arrayOfBuildings);
+usort($arrayOfBuildings, "sortArrayByRating");
+//printTable1($arrayOfBuildings);
 $_SESSION['array'] = $arrayOfBuildings;
 //openWindow();
 //getFileName('.txt');
 //getExcel('Blablabla', $arrayOfBuildings);
 //file_force_download('cookie.txt');
 //printArray($arrayOfPageURLS);
-//usort($arrayOfBuildings, "sortArrayByRating");
 //printArray($arrayOfBuildings);
 //echo json_encode($arrayOfBuildings, JSON_UNESCAPED_UNICODE);
 createJSON();
