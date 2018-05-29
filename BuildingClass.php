@@ -29,7 +29,7 @@ class Building
     public $infrastructure;
     public $landshaft;
     public $notation;
-
+    // 25 атрибутов
     public $lengthsToCity;
     public $landSquare;
     public $cadastralNumber;
@@ -43,7 +43,7 @@ class Building
     
     public $moneyType;
     public $moneyValue;
-
+    // 36 атрибутов
 
     function __construct($url)
     {

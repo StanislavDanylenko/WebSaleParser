@@ -15,8 +15,8 @@ require_once 'createURL.php';
 require_once 'excel.php';
 
 // подключаемся к серверу БД
-$link = mysqli_connect($host, $user, $password, $database)
-or die("Ошибка " . mysqli_error($link));
+//$link = mysqli_connect($host, $user, $password, $database)
+//or die("Ошибка " . mysqli_error($link));
 
 // глобальные переменные
 $arrayOfPageURLS = array();
@@ -25,7 +25,7 @@ $arrayOfBuildings = array();
 $maxPage = 0;
 $currentPage = 0;
 
-$numURLS = 5;
+$numURLS = 50;
 $countParsedURLS = 0;
 
 $URL_for_parsing = '';
@@ -59,6 +59,7 @@ function parseFirstPage($url, $tag, $tagForCountPage, $page = 1){
                 if ($countParsedURL < $numURLS){
                     $key = $res->children(0)->children(0)->children(1)->children(0)->children(0)->children(0)->href;
                     $val = $res->children(0)->children(0)->children(2)->children(0)->children(0)->children(0)->plaintext;
+                    $key = preg_replace('/#.+/','', $key);
                     if (!array_key_exists($key, $arrayOfPageURLS)){
                         $arrayOfPageURLS[$key] = trim($val);
                         $countParsedURL++;
@@ -123,6 +124,7 @@ function parseInnerPage($url, $tagHeader, $tagName, $tagDescription, $tagPhoto, 
                 $res = preg_replace('/ {2,}/',' ',$res);
                 $res = str_replace('&amp;', '&', $res);
                 $res = str_replace('&nbsp;', ' ', $res);
+                $res = str_replace('&quot;',"",$res);
                 $first = mb_substr($res, 0, 1, 'UTF-8');
                 $last = mb_substr($res, mb_strlen($res) - 2, 1, 'UTF-8');
                 if ( strcmp($first, $last)) {
@@ -139,9 +141,24 @@ function parseInnerPage($url, $tagHeader, $tagName, $tagDescription, $tagPhoto, 
                 $res = preg_replace("/\\t/um","",$res);
                 $res = preg_replace("/[^a-zA-ZА-Яа-я0-9\s\-\_\.\,ёЁЇїІіЄєҐґ\!\?]/um","",$res);
                 $res = preg_replace("/span.+?[\.\,]/um","",$res);
+                $res = preg_replace("/span.+?-spanspan/um","",$res);
                 $res = preg_replace("/quot/um","",$res);
-                $res = preg_replace("/\\a?u\d+/um","",$res);
-                $ob->description = $res;
+                $res = preg_replace("/\\.?u\d+/um","",$res);
+                //$res = preg_replace("/\\.?u2029/um","",$res);
+                $res = preg_replace("/[тел\. ]?380.+?-.+?-.+?[\.\,]?/um","",$res);
+                
+                $description = $res;
+                $description = preg_replace("/[\t\r\n]+/",' ', $description);
+                $description = preg_replace('/\s{2,}/',' ',$description);
+                $description = str_replace('&amp;', '&', $description);
+                $description = str_replace('&nbsp;', ' ', $description);
+                $first = mb_substr($description, 0, 1, 'UTF-8');
+                $last = mb_substr($description, mb_strlen($description) - 2, 1, 'UTF-8');
+                if ( strcmp($first, $last)) {
+                    $description = mb_substr($description, 1, strlen($description) - 1, 'UTF-8');
+                }
+    
+                $ob->description = $description;
             }
         }
         if (count($data->find($tagPhoto))){
@@ -428,6 +445,64 @@ function createJSON() {
     echo json_encode($arrayOfBuildings, JSON_UNESCAPED_UNICODE);
 }
 
+function addToDataBase($objectArray) {
+        // подключаемся к серверу
+        global $host, $user, $password, $database;
+        $link = mysqli_connect($host, $user, $password, $database)
+        or die("Ошибка " . mysqli_error($link));
+        $count = 0;
+    foreach ($objectArray as $ob) {
+        // создание строки запроса
+            $query = "INSERT INTO buildings 
+        VALUES(
+            '$ob->URL',
+            '$ob->headline',
+            '$ob->typeSell',
+            '$ob->price',
+            '$ob->lessPrice',
+            '$ob->buildingType',
+            '$ob->houseType',
+            '$ob->floorNumber',
+            '$ob->floorCount',
+            '$ob->commonSquare',
+            '$ob->kitchenSquare',
+            '$ob->wallType',
+            '$ob->roomCount',
+            '$ob->layout',
+            '$ob->tuilet',
+            '$ob->heating',
+            '$ob->repear',
+            '$ob->furniture',
+            '$ob->devices',
+            '$ob->multimedia',
+            '$ob->comfort',
+            '$ob->communication',
+            '$ob->infrastructure',
+            '$ob->landshaft',
+            '$ob->notation',
+            '$ob->lengthsToCity',
+            '$ob->landSquare',
+            '$ob->cadastralNumber',
+            '$ob->outHeatingWall',
+            '$ob->roofType',
+            '$ob->builtYear',
+            '$ob->description',
+            '$ob->photo',
+            '$ob->rating',
+            '$ob->moneyType',
+            '$ob->moneyValue'
+        ) ON DUPLICATE KEY UPDATE URL=URL";
+        // выполняем запрос
+        $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link));
+        if($result){
+                $count++;
+                //echo "<span style='color:blue;'>Данные добавлены $count</span><br>";
+            }
+    }
+    // закрываем подключение
+    mysqli_close($link);
+}
+
 //parseFirstPage('https://www.olx.ua/nedvizhimost/kvartiry-komnaty/poltava/?search%5Border%5D=filter_float_price%3Adesc', 'a[class=marginright5 link linkWithHash detailsLink]', 'span[class=item fleft] a[class=block br3 brc8 large tdnone lheight24] span');
 //printArray($arrayOfPageURLS);
 
@@ -442,6 +517,7 @@ parseFirstPage('https://www.olx.ua/nedvizhimost/kvartiry-komnaty/poltava/?search
 parseArrayOfURLs();
 usort($arrayOfBuildings, "sortArrayByRating");
 //printTable1($arrayOfBuildings);
+addToDataBase($arrayOfBuildings);
 $_SESSION['array'] = $arrayOfBuildings;
 //openWindow();
 //getFileName('.txt');

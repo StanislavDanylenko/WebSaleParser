@@ -135,7 +135,7 @@ foreach ($objectArray as $cell) {
     $sheet->setCellValueByColumnAndRow(24, $startLine, $cell->landshaft);
     
     // форматирование Описания
-    $description = $cell->description;
+    /*$description = $cell->description;
     $description = preg_replace("/[\t\r\n]+/",' ', $description);
     $description = preg_replace('/ {2,}/',' ',$description);
     $description = str_replace('&amp;', '&', $description);
@@ -144,9 +144,9 @@ foreach ($objectArray as $cell) {
     $last = mb_substr($description, mb_strlen($description) - 2, 1, 'UTF-8');
     if ( strcmp($first, $last)) {
         $description = mb_substr($description, 1, strlen($description) - 1, 'UTF-8');
-    }
+    }*/
     
-    $sheet->setCellValueByColumnAndRow(25, $startLine, $description);
+    $sheet->setCellValueByColumnAndRow(25, $startLine, $cell->description);
     $sheet->setCellValueByColumnAndRow(26, $startLine, $cell->lengthsToCity);
     $sheet->setCellValueByColumnAndRow(27, $startLine, $cell->landSquare);
     $sheet->setCellValueByColumnAndRow(28, $startLine, $cell->cadastralNumber);
