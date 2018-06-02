@@ -231,16 +231,16 @@ function parseInnerPage($url, $tagHeader, $tagName, $tagDescription, $tagPhoto, 
                         $ob->houseType = $text;
                         break;
                     case 'этажность':
-                        $ob->floorCount = $text;
+                        $ob->floorCount = preg_replace("/[^0-9]/", '', $text);
                         break;
                     case 'этаж':
-                        $ob->floorNumber = $text;
+                        $ob->floorNumber = preg_replace("/[^0-9]/", '', $text);
                         break;
                     case 'общая площадь':
-                        $ob->commonSquare = $text;
+                        $ob->commonSquare = preg_replace("/[^0-9]/", '', $text);
                         break;
                     case 'площадь кухни':
-                        $ob->kitchenSquare = $text;
+                        $ob->kitchenSquare = preg_replace("/[^0-9]/", '', $text);
                         break;
                     case 'тип стен':
                         $ob->wallType = $text;
@@ -249,19 +249,19 @@ function parseInnerPage($url, $tagHeader, $tagName, $tagDescription, $tagPhoto, 
                         $ob->outHeatingWall = $text;
                         break;
                     case 'количество комнат':
-                        $ob->roomCount = $text;
+                        $ob->roomCount = preg_replace("/[^0-9]/", '', $text);
                         break;
                     case 'планировка':
                         $ob->layout = $text;
                         break;
                     case 'санузел':
-                        $ob->tuilet = $text;
+                        $ob->toilet = $text;
                         break;
                     case 'отопление':
                         $ob->heating = $text;
                         break;
                     case 'ремонт':
-                        $ob->repear = $text;
+                        $ob->repair = $text;
                         break;
                     case 'меблирование':
                         $ob->furniture = $text;
@@ -279,16 +279,16 @@ function parseInnerPage($url, $tagHeader, $tagName, $tagDescription, $tagPhoto, 
                         $ob->infrastructure = $text;
                         break;
                     case 'ландшафт (до 1 км.)':
-                        $ob->landshaft = $text;
+                        $ob->landscape = $text;
                         break;
                     case 'описание':
                         $ob->notation = $text;
                         break;
                     case 'расстояние до ближайшего города':
-                        $ob->lengthToCity = $text;
+                        $ob->lengthsToCity = $text;
                         break;
                     case 'площадь участка':
-                        $ob->landSquare = $text;
+                        $ob->landSquare = preg_replace("/[^0-9]/", '', $text);
                         break;
                     case 'кадастровый номер':
                         $ob->cadastralNumber = $text;
@@ -297,14 +297,14 @@ function parseInnerPage($url, $tagHeader, $tagName, $tagDescription, $tagPhoto, 
                         $ob->roofType = $text;
                         break;
                     case 'год постройки\сдачи':
-                        $ob->biiltYear = $text;
+                        $ob->builtYear = $text;
                         break;
                     case 'мультимедиа':
                         $ob->multimedia = $text;
                         break;
 
                     default:
-                        # code...
+                        # code...do nothing
                         break;
                 }
             }
@@ -386,16 +386,16 @@ function printTable($objectArray){
         echo '<td>'.$ob->wallType.'</td>';
         echo '<td>'.$ob->roomCount.'</td>';
         echo '<td>'.$ob->layout.'</td>';
-        echo '<td>'.$ob->tuilet.'</td>';
+        echo '<td>'.$ob->toilet.'</td>';
         echo '<td>'.$ob->heating.'</td>';
-        echo '<td>'.$ob->repear.'</td>';
+        echo '<td>'.$ob->repair.'</td>';
         echo '<td>'.$ob->furniture.'</td>';
         echo '<td>'.$ob->devices.'</td>';
         echo '<td>'.$ob->multimedia.'</td>';
         echo '<td>'.$ob->comfort.'</td>';
         echo '<td>'.$ob->communication.'</td>';
         echo '<td>'.$ob->infrastructure.'</td>';
-        echo '<td>'.$ob->landshaft.'</td>';
+        echo '<td>'.$ob->landscape.'</td>';
         echo '<td>'.$ob->notation.'</td>';
 
         echo '<td>'.$ob->lengthsToCity.'</td>';
@@ -495,16 +495,16 @@ function addToDataBase($objectArray) {
             '$ob->wallType',
             '$ob->roomCount',
             '$ob->layout',
-            '$ob->tuilet',
+            '$ob->toilet',
             '$ob->heating',
-            '$ob->repear',
+            '$ob->repair',
             '$ob->furniture',
             '$ob->devices',
             '$ob->multimedia',
             '$ob->comfort',
             '$ob->communication',
             '$ob->infrastructure',
-            '$ob->landshaft',
+            '$ob->landscape',
             '$ob->notation',
             '$ob->lengthsToCity',
             '$ob->landSquare',

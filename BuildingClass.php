@@ -18,16 +18,16 @@ class Building
     public $wallType;
     public $roomCount;
     public $layout;
-    public $tuilet;
+    public $toilet;
     public $heating;
-    public $repear;
+    public $repair;
     public $furniture;
     public $devices;
     public $multimedia;
     public $comfort;
     public $communication;
     public $infrastructure;
-    public $landshaft;
+    public $landscape;
     public $notation;
     // 25 атрибутов
     public $lengthsToCity;
@@ -62,16 +62,16 @@ class Building
         $this->wallType = "-";
         $this->roomCount = "-";
         $this->layout = "-";
-        $this->tuilet = "-";
+        $this->toilet = "-";
         $this->heating = "-";
-        $this->repear = "-";
+        $this->repair = "-";
         $this->furniture = "-";
         $this->devices = "-";
         $this->multimedia = "-";
         $this->comfort = "-";
         $this->communication = "-";
         $this->infrastructure = "-";
-        $this->landshaft = "-";
+        $this->landscape = "-";
         $this->notation = "-";
 
         $this->lengthsToCity = "-";
@@ -103,16 +103,16 @@ class Building
             (string)$this->wallType.'<br>'.
             (string)$this->roomCount.'<br>'.
             (string)$this->layout.'<br>'.
-            (string)$this->tuilet.'<br>'.
+            (string)$this->toilet.'<br>'.
             (string)$this->heating.'<br>'.
-            (string)$this->repear.'<br>'.
+            (string)$this->repair.'<br>'.
             (string)$this->furniture.'<br>'.
             (string)$this->devices.'<br>'.
             (string)$this->multimedia.'<br>'.
             (string)$this->comfort.'<br>'.
             (string)$this->communication.'<br>'.
             (string)$this->infrastructure.'<br>'.
-            (string)$this->landshaft.'<br>'.
+            (string)$this->landscape.'<br>'.
             (string)$this->notation.'<br>'.
 
             (string)$this->lengthsToCity.'<br>'.
