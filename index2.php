@@ -151,11 +151,8 @@ function parseInnerPage($url, $tagHeader, $tagName, $tagDescription, $tagPhoto, 
                 $res = str_replace('&amp;', '&', $res);
                 $res = str_replace('&nbsp;', ' ', $res);
                 $res = str_replace('&quot;',"",$res);
-                $first = mb_substr($res, 0, 1, 'UTF-8');
-                $last = mb_substr($res, mb_strlen($res) - 2, 1, 'UTF-8');
-                if ( strcmp($first, $last)) {
-                    $res = mb_substr($res, 1, strlen($res) - 1, 'UTF-8');
-                }
+                $res = preg_replace('/^\s+/m', "", $res);
+                $res = preg_replace('/\s+$/m', "", $res);
                 $ob->headline = $res;
             }
         }
@@ -170,7 +167,6 @@ function parseInnerPage($url, $tagHeader, $tagName, $tagDescription, $tagPhoto, 
                 $res = preg_replace("/span.+?-spanspan/um","",$res);
                 $res = preg_replace("/quot/um","",$res);
                 $res = preg_replace("/\\.?u\d+/um","",$res);
-                //$res = preg_replace("/\\.?u2029/um","",$res);
                 $res = preg_replace("/[тел\. ]?380.+?-.+?-.+?[\.\,]?/um","",$res);
 
                 $description = $res;
@@ -178,12 +174,8 @@ function parseInnerPage($url, $tagHeader, $tagName, $tagDescription, $tagPhoto, 
                 $description = preg_replace('/\s{2,}/',' ',$description);
                 $description = str_replace('&amp;', '&', $description);
                 $description = str_replace('&nbsp;', ' ', $description);
-                $first = mb_substr($description, 0, 1, 'UTF-8');
-                $last = mb_substr($description, mb_strlen($description) - 2, 1, 'UTF-8');
-                if ( strcmp($first, $last)) {
-                    $description = mb_substr($description, 1, strlen($description) - 1, 'UTF-8');
-                }
-
+                $description = preg_replace('/^\s+/m', "", $description);
+                $description = preg_replace('/\s+$/m', "", $description);
                 $ob->description = $description;
             }
         }
@@ -219,16 +211,16 @@ function parseInnerPage($url, $tagHeader, $tagName, $tagDescription, $tagPhoto, 
 
                 switch ( mb_strtolower($head)) {
                     case 'объявление от':
-                        $ob->typeSell = $text;
+                        $ob->typeSell = preg_replace('/\s+$/m', "", $text);
                         break;
                     case 'без комиссии':
-                        $ob->lessPrice = $text;
+                        $ob->lessPrice = preg_replace('/\s+$/m', "", $text);
                         break;
                     case 'тип объекта':
-                        $ob->buildingType = $text;
+                        $ob->buildingType = preg_replace('/\s+$/m', "", $text);
                         break;
                     case 'тип дома':
-                        $ob->houseType = $text;
+                        $ob->houseType = preg_replace('/\s+$/m', "", $text);
                         break;
                     case 'этажность':
                         $ob->floorCount = preg_replace("/[^0-9]/", '', $text);
@@ -243,64 +235,64 @@ function parseInnerPage($url, $tagHeader, $tagName, $tagDescription, $tagPhoto, 
                         $ob->kitchenSquare = preg_replace("/[^0-9]/", '', $text);
                         break;
                     case 'тип стен':
-                        $ob->wallType = $text;
+                        $ob->wallType = preg_replace('/\s+$/m', "", $text);
                         break;
                     case 'внешнее утепленее стен':
-                        $ob->outHeatingWall = $text;
+                        $ob->outHeatingWall = preg_replace('/\s+$/m', "", $text);
                         break;
                     case 'количество комнат':
                         $ob->roomCount = preg_replace("/[^0-9]/", '', $text);
                         break;
                     case 'планировка':
-                        $ob->layout = $text;
+                        $ob->layout = preg_replace('/\s+$/m', "", $text);
                         break;
                     case 'санузел':
-                        $ob->toilet = $text;
+                        $ob->toilet = preg_replace('/\s+$/m', "", $text);
                         break;
                     case 'отопление':
-                        $ob->heating = $text;
+                        $ob->heating = preg_replace('/\s+$/m', "", $text);
                         break;
                     case 'ремонт':
-                        $ob->repair = $text;
+                        $ob->repair = preg_replace('/\s+$/m', "", $text);
                         break;
                     case 'меблирование':
-                        $ob->furniture = $text;
+                        $ob->furniture = preg_replace('/\s+$/m', "", $text);
                         break;
                     case 'бытовая техника':
-                        $ob->devices = $text;
+                        $ob->devices = preg_replace('/\s+$/m', "", $text);
                         break;
                     case 'комфорт':
-                        $ob->comfort = $text;
+                        $ob->comfort = preg_replace('/\s+$/m', "", $text);
                         break;
                     case 'коммуникации':
-                        $ob->communication = $text;
+                        $ob->communication = preg_replace('/\s+$/m', "", $text);
                         break;
                     case 'инфраструктура (до 500 метров)':
-                        $ob->infrastructure = $text;
+                        $ob->infrastructure = preg_replace('/\s+$/m', "", $text);
                         break;
                     case 'ландшафт (до 1 км.)':
-                        $ob->landscape = $text;
+                        $ob->landscape = preg_replace('/\s+$/m', "", $text);
                         break;
                     case 'описание':
-                        $ob->notation = $text;
+                        $ob->notation = preg_replace('/\s+$/m', "", $text);
                         break;
                     case 'расстояние до ближайшего города':
-                        $ob->lengthsToCity = $text;
+                        $ob->lengthsToCity = preg_replace('/\s+$/m', "", $text);
                         break;
                     case 'площадь участка':
                         $ob->landSquare = preg_replace("/[^0-9]/", '', $text);
                         break;
                     case 'кадастровый номер':
-                        $ob->cadastralNumber = $text;
+                        $ob->cadastralNumber = preg_replace('/\s+$/m', "", $text);
                         break;
                     case 'тип кровли':
-                        $ob->roofType = $text;
+                        $ob->roofType = preg_replace('/\s+$/m', "", $text);
                         break;
                     case 'год постройки\сдачи':
-                        $ob->builtYear = $text;
+                        $ob->builtYear = preg_replace('/\s+$/m', "", $text);
                         break;
                     case 'мультимедиа':
-                        $ob->multimedia = $text;
+                        $ob->multimedia = preg_replace('/\s+$/m', "", $text);
                         break;
 
                     default:
