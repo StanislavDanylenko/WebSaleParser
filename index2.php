@@ -4,13 +4,24 @@
 session_start();
 
 $_SESSION['name'] = 'cookie.txt';
-$_SESSION['moneyType'] = 'UAH';
+$_SESSION['moneyType'] = 'UAH'; // потом убрать-------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 $str_json = file_get_contents('php://input');
-
 $response = json_decode($str_json, true);
+
 // убрать
 $_SESSION['moneyType'] = $response['location'];
+
+// ****** раскоментить**********
+//$numURLS = $response['countRequest'];
+//$_SESSION['moneyType'] = $response['priceType'];
+
+// *********раскоментить*********
+/*if(strcasecmp($response['typeBuild'], 'house') == 0) {
+    createURLHouse();
+} else {
+    createURLFlat();
+}*/
 
 require_once 'connection.php';
 require_once 'simple_html_dom.php';
@@ -31,7 +42,7 @@ $arrayOfBuildings = array();
 $maxPage = 0;
 $currentPage = 0;
 
-$numURLS = 50;
+$numURLS = 50; // потом убрать-------------------------------------!!!!!!!!!!!!!!!!
 $countParsedURLS = 0;
 
 $URL_for_parsing = '';
