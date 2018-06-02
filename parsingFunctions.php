@@ -8,6 +8,29 @@ function parseFirstPage($url, $tag, $tagForCountPage, $page = 1){
     $res = 0;
 
     if ($data->innertext!=''){
+
+        $tagNothingFound = 'h1[class=c41 lheight24]';
+        if (count($data->find($tagNothingFound))){
+            foreach($data->find($tagNothingFound) as $el){
+                $temp = $el;
+                if (strcasecmp($temp, '') != 0){
+                    return;
+                }
+            }
+        }
+
+        $tagSomeFound = 'div[class=dontHasPromoted section clr rel] h2';
+        if (count($data->find($tagSomeFound))){
+            foreach($data->find($tagSomeFound) as $el){
+                $temp = preg_replace("/[^0-9]/", '', $el->plaintext);
+                if ($temp < $numURLS){
+                    $numURLS = $temp;
+                }
+            }
+        }
+
+
+
         if(count($data->find( $tagForCountPage))){
             foreach($data->find($tagForCountPage) as $a){
                 $res = $a->plaintext;
