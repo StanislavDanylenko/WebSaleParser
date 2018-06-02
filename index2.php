@@ -5,32 +5,12 @@ session_start();
 
 $_SESSION['name'] = 'cookie.txt';
 $_SESSION['moneyType'] = 'UAH';
-//echo $_SESSION['test'];
-//$json =  $_POST['area'];
-/*$json = file_get_contents('php://input');
-echo json_decode($json);*/
-//echo $_SESSION['test'];
-//echo 'Hello';
 
 $str_json = file_get_contents('php://input');
-
-//($_POST doesn't work here)
-//echo '<br>';
-//echo $str_json;
 
 $response = json_decode($str_json, true);
 // убрать
 $_SESSION['moneyType'] = $response['location'];
-
-// decoding received JSON to array
-//echo $response['area'];
-//echo $response['location'];
-
-//var_dump(json_decode($str_json));
-//var_dump(json_decode($str_json, true));
-//$lName = $response[0];
-//echo $lName;
-
 
 require_once 'connection.php'; // подключаем скрипт
 require_once 'simple_html_dom.php';
@@ -39,10 +19,6 @@ require_once 'curl.php';
 require_once 'oldFunc.php';
 require_once 'createURL.php';
 require_once 'excel.php';
-
-// подключаемся к серверу БД
-//$link = mysqli_connect($host, $user, $password, $database)
-//or die("Ошибка " . mysqli_error($link));
 
 // глобальные переменные
 $arrayOfPageURLS = array();
@@ -514,35 +490,16 @@ function addToDataBase($objectArray) {
         $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link));
         if($result){
             $count++;
-            //echo "<span style='color:blue;'>Данные добавлены $count</span><br>";
         }
     }
     // закрываем подключение
     mysqli_close($link);
 }
 
-//parseFirstPage('https://www.olx.ua/nedvizhimost/kvartiry-komnaty/poltava/?search%5Border%5D=filter_float_price%3Adesc', 'a[class=marginright5 link linkWithHash detailsLink]', 'span[class=item fleft] a[class=block br3 brc8 large tdnone lheight24] span');
-//printArray($arrayOfPageURLS);
-
 parseFirstPage('https://www.olx.ua/nedvizhimost/kvartiry-komnaty/poltava/?search%5Border%5D=filter_float_price%3Adesc', 'td[class=offer] table tbody]', 'span[class=item fleft] a[class=block br3 brc8 large tdnone lheight24] span');
-//printArray($arrayOfPageURLS);
-//$arrayOfPageURLS['https://www.olx.ua/obyavlenie/srochno-sobstvennik-sdan-1-k-kv-ul-perspektivnaya-11-m-n-sadovyy-IDl9aQe.html#65b8e63905;promoted'] = '50000';
-//parseInnerPage('https://www.olx.ua/obyavlenie/srochno-sobstvennik-sdan-1-k-kv-ul-perspektivnaya-11-m-n-sadovyy-IDl9aQe.html#65b8e63905;promoted', 'table[class=item] tbody tr',
-//                'div[class=offer-titlebox] h1',
-//                'div[id=textContent] p',
-//                'div[id=photo-gallery-opener] img',
-//                'div[id=offerbottombar] div[class=pdingtop10] strong');
 parseArrayOfURLs();
 usort($arrayOfBuildings, "sortArrayByRating");
-//printTable1($arrayOfBuildings);
 addToDataBase($arrayOfBuildings);
 $_SESSION['array'] = $arrayOfBuildings;
-//openWindow();
-//getFileName('.txt');
-//getExcel('Blablabla', $arrayOfBuildings);
-//file_force_download('cookie.txt');
-//printArray($arrayOfPageURLS);
-//printArray($arrayOfBuildings);
-//echo json_encode($arrayOfBuildings, JSON_UNESCAPED_UNICODE);
 createJSON();
 ?>

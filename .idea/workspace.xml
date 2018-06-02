@@ -15,25 +15,7 @@
         <entry file="file://$PROJECT_DIR$/index2.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="832">
-              <caret line="547" column="2" selection-start-line="547" selection-start-column="2" selection-end-line="547" selection-end-column="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="excel.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/excel.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="119" column="47" selection-start-line="119" selection-start-column="47" selection-end-line="119" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BuildingClass.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/BuildingClass.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="20" column="19" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+              <caret line="504" column="2" selection-start-line="504" selection-start-column="2" selection-end-line="504" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -74,7 +56,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="260" />
     <option name="y" value="20" />
     <option name="width" value="1400" />
@@ -129,15 +111,15 @@
       <workItem from="1526368356956" duration="1638000" />
       <workItem from="1526370221822" duration="13579000" />
       <workItem from="1527423231677" duration="1325000" />
-      <workItem from="1527930473728" duration="5130000" />
+      <workItem from="1527930473728" duration="6537000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21672000" />
+    <option name="totallyTimeSpent" value="23079000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18020834" />
@@ -264,17 +246,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BuildingClass.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="20" column="19" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/indexOld.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="427">
           <caret line="808" column="114" lean-forward="true" selection-start-line="808" selection-start-column="16" selection-end-line="808" selection-end-column="114" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BuildingClass.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="20" column="19" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -288,7 +270,7 @@
     <entry file="file://$PROJECT_DIR$/index2.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="832">
-          <caret line="547" column="2" selection-start-line="547" selection-start-column="2" selection-end-line="547" selection-end-column="2" />
+          <caret line="504" column="2" selection-start-line="504" selection-start-column="2" selection-end-line="504" selection-end-column="2" />
         </state>
       </provider>
     </entry>
