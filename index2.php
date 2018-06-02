@@ -2,9 +2,35 @@
 //ob_start();
 
 session_start();
+
 $_SESSION['name'] = 'cookie.txt';
 $_SESSION['moneyType'] = 'UAH';
 //echo $_SESSION['test'];
+//$json =  $_POST['area'];
+/*$json = file_get_contents('php://input');
+echo json_decode($json);*/
+//echo $_SESSION['test'];
+//echo 'Hello';
+
+$str_json = file_get_contents('php://input');
+
+//($_POST doesn't work here)
+//echo '<br>';
+//echo $str_json;
+
+$response = json_decode($str_json, true); 
+// убрать
+$_SESSION['moneyType'] = $response['location'];
+
+// decoding received JSON to array
+//echo $response['area'];
+//echo $response['location'];
+
+//var_dump(json_decode($str_json));
+//var_dump(json_decode($str_json, true));
+//$lName = $response[0];
+//echo $lName;
+
 
 require_once 'connection.php'; // подключаем скрипт
 require_once 'simple_html_dom.php';
@@ -25,7 +51,7 @@ $arrayOfBuildings = array();
 $maxPage = 0;
 $currentPage = 0;
 
-$numURLS = 50;
+$numURLS = 5;
 $countParsedURLS = 0;
 
 $URL_for_parsing = '';
