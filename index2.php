@@ -51,7 +51,7 @@ $arrayOfBuildings = array();
 $maxPage = 0;
 $currentPage = 0;
 
-$numURLS = 5;
+$numURLS = 50;
 $countParsedURLS = 0;
 
 $URL_for_parsing = '';
@@ -229,10 +229,10 @@ function parseInnerPage($url, $tagHeader, $tagName, $tagDescription, $tagPhoto, 
                         $ob->floorNumber = preg_replace("/[^0-9]/", '', $text);
                         break;
                     case 'общая площадь':
-                        $ob->commonSquare = preg_replace("/[^0-9]/", '', $text);
+                        $ob->commonSquare = preg_replace("/[^0-9\.]/", '', $text);
                         break;
                     case 'площадь кухни':
-                        $ob->kitchenSquare = preg_replace("/[^0-9]/", '', $text);
+                        $ob->kitchenSquare = preg_replace("/[^0-9\.]/", '', $text);
                         break;
                     case 'тип стен':
                         $ob->wallType = preg_replace('/\s+$/m', "", $text);
@@ -280,7 +280,7 @@ function parseInnerPage($url, $tagHeader, $tagName, $tagDescription, $tagPhoto, 
                         $ob->lengthsToCity = preg_replace('/\s+$/m', "", $text);
                         break;
                     case 'площадь участка':
-                        $ob->landSquare = preg_replace("/[^0-9]/", '', $text);
+                        $ob->landSquare = preg_replace("/[^0-9\.]/", '', $text);
                         break;
                     case 'кадастровый номер':
                         $ob->cadastralNumber = preg_replace('/\s+$/m', "", $text);
