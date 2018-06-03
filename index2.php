@@ -3,26 +3,6 @@
 
 session_start();
 
-$_SESSION['name'] = 'cookie.txt';
-$_SESSION['moneyType'] = 'UAH'; // потом убрать-------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-$str_json = file_get_contents('php://input');
-$response = json_decode($str_json, true);
-
-// убрать
-$_SESSION['moneyType'] = $response['location'];
-
-// ****** раскоментить**********
-//$numURLS = $response['countRequest'];
-//$_SESSION['moneyType'] = $response['priceType'];
-
-// *********раскоментить*********
-/*if(strcasecmp($response['typeBuild'], 'house') == 0) {
-    createURLHouse();
-} else {
-    createURLFlat();
-}*/
-
 require_once 'connection.php';
 require_once 'simple_html_dom.php';
 require_once 'BuildingClass.php';
@@ -35,22 +15,41 @@ require_once 'parsingFunctions.php';
 require_once 'printFunctions.php';
 require_once 'processFunctions.php';
 
+$_SESSION['name'] = 'cookie.txt';
+$_SESSION['moneyType'] = 'UAH'; // потом убрать-------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+$str_json = file_get_contents('php://input');
+$response = json_decode($str_json, true);
+
 // глобальные переменные
+$numURLS = 10; // потом убрать-------------------------------------!!!!!!!!!!!!!!!!
+$URL_for_parsing = '';
 $arrayOfPageURLS = array();
 $arrayOfBuildings = array();
 
+// убрать
+//$_SESSION['moneyType'] = $response['location'];//------------убрать"!"!!!!!!!!!!!!!!!"
+
+// ****** раскоментить**********
+$numURLS = $response['countRequest'];
+$_SESSION['moneyType'] = $response['priceType'];
+
+// *********раскоментить*********
+if(strcasecmp($response['typeBuild'], 'house') == 0) {
+    createURLHouse();
+} else {
+    createURLFlat();
+}
+//echo $URL_for_parsing;
+// рабочие переменные
 $maxPage = 0;
 $currentPage = 0;
-
-$numURLS = 50; // потом убрать-------------------------------------!!!!!!!!!!!!!!!!
 $countParsedURLS = 0;
 
-$URL_for_parsing = '';
-
-parseFirstPage('https://www.olx.ua/nedvizhimost/kvartiry-komnaty/poltava/?search%5Border%5D=filter_float_price%3Adesc', 'td[class=offer] table tbody]', 'span[class=item fleft] a[class=block br3 brc8 large tdnone lheight24] span');
+parseFirstPage($URL_for_parsing, 'td[class=offer] table tbody]', 'span[class=item fleft] a[class=block br3 brc8 large tdnone lheight24] span');
 parseArrayOfURLs();
 usort($arrayOfBuildings, "sortArrayByRating");
-addToDataBase($arrayOfBuildings);
 $_SESSION['array'] = $arrayOfBuildings;
 createJSON();
+addToDataBase($arrayOfBuildings);
 ?>

@@ -11,11 +11,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="parsingFunctions.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="parsingFunctions.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/parsingFunctions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4335">
-              <caret line="280" column="2" selection-start-line="280" selection-start-column="2" selection-end-line="280" selection-end-column="2" />
+            <state relative-caret-position="-1071">
+              <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
               <folding>
                 <element signature="n#parseNextPage#0;n#!!top" />
               </folding>
@@ -23,14 +23,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="createURL.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="createURL.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/createURL.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-17">
-              <caret line="68" column="19" lean-forward="true" selection-start-line="68" selection-start-column="19" selection-end-line="68" selection-end-column="19" />
+            <state relative-caret-position="17">
+              <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
               <folding>
+                <element signature="n#createURL#0;n#!!top" />
                 <element signature="n#createURLHouse#0;n#!!top" />
+                <element signature="n#createURLFlat#0;n#!!top" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index2.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index2.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -60,8 +71,8 @@
         <option value="$PROJECT_DIR$/printFunctions.php" />
         <option value="$PROJECT_DIR$/processFunctions.php" />
         <option value="$PROJECT_DIR$/index2.php" />
-        <option value="$PROJECT_DIR$/createURL.php" />
         <option value="$PROJECT_DIR$/parsingFunctions.php" />
+        <option value="$PROJECT_DIR$/createURL.php" />
       </list>
     </option>
   </component>
@@ -130,12 +141,12 @@
       <workItem from="1526370221822" duration="13579000" />
       <workItem from="1527423231677" duration="1325000" />
       <workItem from="1527930473728" duration="8621000" />
-      <workItem from="1527946017844" duration="11186000" />
+      <workItem from="1527946017844" duration="14863000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36349000" />
+    <option name="totallyTimeSpent" value="40026000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -171,7 +182,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="6" />
+      <option name="time" value="7" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -209,27 +220,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index2.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="34" lean-forward="true" selection-end-line="55" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/createURL.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-17">
-          <caret line="68" column="19" lean-forward="true" selection-start-line="68" selection-start-column="19" selection-end-line="68" selection-end-column="19" />
-          <folding>
-            <element signature="n#createURLHouse#0;n#!!top" />
-          </folding>
+        <state relative-caret-position="374">
+          <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/parsingFunctions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4335">
-          <caret line="280" column="2" selection-start-line="280" selection-start-column="2" selection-end-line="280" selection-end-column="2" />
+        <state relative-caret-position="-1071">
+          <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
           <folding>
             <element signature="n#parseNextPage#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/createURL.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
+          <folding>
+            <element signature="n#createURL#0;n#!!top" />
+            <element signature="n#createURLHouse#0;n#!!top" />
+            <element signature="n#createURLFlat#0;n#!!top" />
           </folding>
         </state>
       </provider>
