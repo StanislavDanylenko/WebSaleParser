@@ -51,7 +51,7 @@ function getExcel($fileName, $objectArray){
     $sheet->getColumnDimension('E')->setWidth(20);
     $sheet->getColumnDimension('F')->setWidth(20);
     $sheet->getColumnDimension('G')->setWidth(30);
-    $sheet->getColumnDimension('H')->setWidth(20);
+    $sheet->getColumnDimension('H')->setWidth(30);
     $sheet->getColumnDimension('I')->setWidth(20);
     $sheet->getColumnDimension('J')->setWidth(30);
     $sheet->getColumnDimension('K')->setWidth(30);

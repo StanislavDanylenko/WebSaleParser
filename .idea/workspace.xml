@@ -10,24 +10,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="parsingFunctions.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/parsingFunctions.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1071">
-              <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
-              <folding>
-                <element signature="n#parseNextPage#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="createURL.php" pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="createURL.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/createURL.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
+            <state relative-caret-position="68">
+              <caret line="139" lean-forward="true" selection-start-line="139" selection-end-line="139" />
               <folding>
                 <element signature="n#createURL#0;n#!!top" />
                 <element signature="n#createURLHouse#0;n#!!top" />
@@ -37,11 +25,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index2.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index2.php">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+            <state relative-caret-position="281">
+              <caret line="785" column="63" selection-start-line="785" selection-start-column="63" selection-end-line="785" selection-end-column="63" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="res.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="459" column="41" lean-forward="true" selection-start-line="459" selection-start-column="41" selection-end-line="459" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -53,6 +50,7 @@
       <find>downloa</find>
       <find>butto</find>
       <find>[^</find>
+      <find>button</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -70,9 +68,10 @@
         <option value="$PROJECT_DIR$/excel.php" />
         <option value="$PROJECT_DIR$/printFunctions.php" />
         <option value="$PROJECT_DIR$/processFunctions.php" />
-        <option value="$PROJECT_DIR$/index2.php" />
         <option value="$PROJECT_DIR$/parsingFunctions.php" />
         <option value="$PROJECT_DIR$/createURL.php" />
+        <option value="$PROJECT_DIR$/index2.php" />
+        <option value="$PROJECT_DIR$/res.js" />
       </list>
     </option>
   </component>
@@ -86,10 +85,9 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="260" />
-    <option name="y" value="20" />
-    <option name="width" value="1400" />
-    <option name="height" value="1000" />
+    <option name="x" value="1001" />
+    <option name="width" value="926" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -141,18 +139,18 @@
       <workItem from="1526370221822" duration="13579000" />
       <workItem from="1527423231677" duration="1325000" />
       <workItem from="1527930473728" duration="8621000" />
-      <workItem from="1527946017844" duration="14863000" />
+      <workItem from="1527946017844" duration="19366000" />
+      <workItem from="1528042299166" duration="3720000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40026000" />
+    <option name="totallyTimeSpent" value="48249000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18020834" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23560767" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32943678" />
@@ -186,6 +184,18 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/createURL.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="222" column="2" lean-forward="true" selection-start-line="222" selection-start-column="2" selection-end-line="222" selection-end-column="2" />
+          <folding>
+            <element signature="n#createURL#0;n#!!top" />
+            <element signature="n#createURLHouse#0;n#!!top" />
+            <element signature="n#createURLFlat#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index2.php" />
     <entry file="file://$PROJECT_DIR$/index.php" />
     <entry file="file://$PROJECT_DIR$/download.php" />
@@ -197,7 +207,6 @@
     <entry file="file://$PROJECT_DIR$/cookie.txt" />
     <entry file="file://$PROJECT_DIR$/curl.php" />
     <entry file="file://$PROJECT_DIR$/download.php" />
-    <entry file="file://$PROJECT_DIR$/index.php" />
     <entry file="file://$PROJECT_DIR$/index4.php" />
     <entry file="file://$PROJECT_DIR$/simple_html_dom.php" />
     <entry file="file://$PROJECT_DIR$/oldFunc.php" />
@@ -218,32 +227,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index2.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/parsingFunctions.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1071">
           <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
-          <folding>
-            <element signature="n#parseNextPage#0;n#!!top" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index2.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="459" column="41" lean-forward="true" selection-start-line="459" selection-start-column="41" selection-end-line="459" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/createURL.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
+        <state relative-caret-position="68">
+          <caret line="139" lean-forward="true" selection-start-line="139" selection-end-line="139" />
           <folding>
             <element signature="n#createURL#0;n#!!top" />
             <element signature="n#createURLHouse#0;n#!!top" />
             <element signature="n#createURLFlat#0;n#!!top" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="785" column="63" selection-start-line="785" selection-start-column="63" selection-end-line="785" selection-end-column="63" />
         </state>
       </provider>
     </entry>

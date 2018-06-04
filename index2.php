@@ -1,5 +1,4 @@
 <?php
-//ob_start();
 
 session_start();
 
@@ -16,40 +15,42 @@ require_once 'printFunctions.php';
 require_once 'processFunctions.php';
 
 $_SESSION['name'] = 'cookie.txt';
-$_SESSION['moneyType'] = 'UAH'; // потом убрать-------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+$_SESSION['moneyType'] = 'UAH'; 
 
+// получить json
 $str_json = file_get_contents('php://input');
 $response = json_decode($str_json, true);
 
 // глобальные переменные
-$numURLS = 10; // потом убрать-------------------------------------!!!!!!!!!!!!!!!!
-$URL_for_parsing = '';
+$numURLS = 0; 
+$URL_for_parsing = ''; 
 $arrayOfPageURLS = array();
 $arrayOfBuildings = array();
 
-// убрать
-//$_SESSION['moneyType'] = $response['location'];//------------убрать"!"!!!!!!!!!!!!!!!"
-
-// ****** раскоментить**********
+// задать нужные параметры
 $numURLS = $response['countRequest'];
 $_SESSION['moneyType'] = $response['priceType'];
 
-// *********раскоментить*********
+// сформировать поисковую строку
 if(strcasecmp($response['typeBuild'], 'house') == 0) {
     createURLHouse();
 } else {
     createURLFlat();
 }
-//echo $URL_for_parsing;
+
 // рабочие переменные
 $maxPage = 0;
 $currentPage = 0;
 $countParsedURLS = 0;
 
+//echo $URL_for_parsing;
+//var_dump($response);
+
+// спарсить
 parseFirstPage($URL_for_parsing, 'td[class=offer] table tbody]', 'span[class=item fleft] a[class=block br3 brc8 large tdnone lheight24] span');
 parseArrayOfURLs();
 usort($arrayOfBuildings, "sortArrayByRating");
 $_SESSION['array'] = $arrayOfBuildings;
 createJSON();
-addToDataBase($arrayOfBuildings);
+//addToDataBase($arrayOfBuildings);
 ?>

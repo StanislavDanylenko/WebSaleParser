@@ -9,7 +9,7 @@ function printArrayOld($arr){
 
 function parseFirstPageOld($url, $tag, $tagForCountPage, $page = 1){
     global $maxPage, $currentPage, $countParsedURL, $arrayOfPageURLS, $numURLS;
-
+    
     $fullURL = $url.'%27&page='.$page;
     $data = str_get_html(CURLrequest($fullURL));
     $res = 0;

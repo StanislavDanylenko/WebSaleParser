@@ -28,7 +28,9 @@ function parseFirstPage($url, $tag, $tagForCountPage, $page = 1){
                 }
             }
         }
-        
+
+
+
         if(count($data->find( $tagForCountPage))){
             foreach($data->find($tagForCountPage) as $a){
                 $res = $a->plaintext;

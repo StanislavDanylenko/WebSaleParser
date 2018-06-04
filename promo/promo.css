@@ -1,0 +1,125 @@
+
+.slider{
+	background-color: #F8F7F7;
+}
+
+.slider_content{
+	display: flex;
+	position: relative;
+}
+
+.slider_content > a {
+	display: none;
+	width: 100%;
+}
+
+.slider_content>.content_current > img{
+	width: 100%;
+	height:100%;
+}
+
+.slider_content>.content_current{
+	width: 100%;
+	display: block;
+}
+
+.current-item{
+	width: 70px;
+	margin: 0 auto;
+	padding: 30px 0;
+	display: flex;
+	justify-content: space-around;
+}
+
+.dote{
+	display: block;
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background-color: #d2d2d2;
+}
+
+.dote:hover{
+	cursor: pointer;
+}
+
+.current_dote{
+	background-color: green;
+}
+
+.slider_btn{
+	width: 30px;
+	height: 105px;
+	position: absolute;
+	background-color: green;
+}
+
+.slider_btn::before{
+	position: absolute;
+	width: 4px;
+	height: 18px;
+	content: "";
+	display: block;
+	transform: rotate(45deg);
+	left: 40%;
+	top: calc(50% - 14px);
+	background: white;
+}
+
+.slider_btn::after{
+	position: absolute;
+	width: 4px;
+	height: 18px;
+	content: "";
+	display: block;
+	transform: rotate(-45deg);
+	left: 40%;
+	bottom: calc(50% - 14px);
+	background: white;
+}
+
+.prev{
+	left: 0;
+}
+
+.prev, .next{
+	top: calc(50% - 52.5px);
+}
+
+.next{
+	right: 0;
+	transform: rotate(180deg);
+}
+
+@keyframes fade {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.slider img{
+	animation-name: fade;
+    animation-duration: 2s;
+    animation-timing-function: linear;   
+}
+
+@media screen and (min-width: 1317px){
+	.promo, .banner{
+		width: 1300px;
+		margin: 0 auto;
+	}
+}
+
+@media screen and (max-width: 1023px) {
+	.next, .prev{
+		display: none;
+	}
+}
+
+@media screen and (max-width: 767px){
+	.slider_content>.content_current > img{
+		height: 100%;
+	}
+}
+
+
+

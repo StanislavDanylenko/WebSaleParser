@@ -110,7 +110,7 @@ function createURLHouse(){
 
     // дописать мин этажность
     if(strcasecmp($response['floorCountMax'], "") != 0) {
-        $URL = $URL.'&search%5Bfilter_float_floor%3Ato%5D='.$response['floorCountMax'];
+        $URL = $URL.'&search%5Bfilter_float_total_floors%3Ato%5D='.$response['floorCountMax'];
     }
 
     // дописать мин количество комнат
@@ -172,7 +172,7 @@ function createURLFlat(){
 
     //if(strcasecmp($response['priceType'], "UAH") != 0){
     $URL = $URL.'currency='.$response['priceType'];
-    // }
+   // }
 
     // дописать мин этажность
     if(strcasecmp($response['floorCountMin'], "") != 0) {
