@@ -260,7 +260,6 @@ class JSONRequireObject {
             case "Токмак": return "tokmak";
             case "Энергодар": return "energodar";
 
-
             case "Богородчаны": return "bogorodchany";
             case "Болехов": return "bolekhov";
             case "Бурштын": return "burshtyn";
@@ -307,7 +306,11 @@ class JSONRequireObject {
             case "Переяслав-Хмельницкий": return "pereyaslav-khmelnitskiy";
             case "Припять": return "pripyat";
             case "Ржищев": return "rzhishchev";
-            case "Рокитное": return "rokitnoe";
+            case "Рокитное":
+                switch(rusRegion) {
+                    case "Киевская": return "rokitnoe";
+                    case "Ровенская": return "rokitnoe_699";
+                }
             case "Сквира": return "skvira";
             case "Славутич": return "slavutich";
             case "Тараща": return "tarashcha";
@@ -370,7 +373,6 @@ class JSONRequireObject {
             case "Щёлкино": return "shchyelkino";
             case "Ялта": return "yalta";
 
-
             case "Александровск": return "aleksandrovsk";
             case "Алмазная": return "almaznaya";
             case "Алчевск": return "alchevsk";
@@ -395,7 +397,6 @@ class JSONRequireObject {
             case "Молодогвардейск": return "molodogvardeysk";
             case "Новодружеск": return "novodruzhesk";
             case "Новопсков": return "novopskov";
-            case "Первомайск": return "pervomaysk_326";
             case "Перевальск": return "perevalsk";
             case "Петровское": return "petrovskoe";
             case "Попасная": return "popasnaya";
@@ -411,7 +412,6 @@ class JSONRequireObject {
             case "Суходольск": return "sukhodolsk";
             case "Счастье": return "schaste";
             case "Червонопартизанск": return "chervonopartizansk_433";
-
 
             case "Белз": return "belz";
             case "Бобрка": return "bobrka";
@@ -435,7 +435,11 @@ class JSONRequireObject {
             case "Каменка-Бугская": return "kamenka-bugskaya";
             case "Львов": return "lvov";
             case "Мостиска": return "mostiska";
-            case "Николаев": return "nikolaev";
+            case "Николаев":
+                switch(rusRegion) {
+                    case "Львовская": return "nikolaev";
+                    case "Николаевская": return "nikolaev_106";
+                }
             case "Новояворовск": return "novoyavorovsk";
             case "Новый Роздол": return "novyy-rozdol";
             case "Перемышляны": return "peremyshlyane";
@@ -456,7 +460,7 @@ class JSONRequireObject {
             case "Червоноград": return "chervonograd";
             case "Яворов": return "yavorov";
 
-            case "Александровка": return "aleksandrovka_665";
+            case "Южноукраинск": return "yuzhnoukrainsk";
             case "Арбузинка": return "arbuzinka";
             case "Баштанка": return "bashtanka";
             case "Березнеговатое": return "bereznegovatoye";
@@ -468,12 +472,10 @@ class JSONRequireObject {
             case "Еланец": return "yelanets";
             case "Казанка": return "kazanka";
             case "Кривое Озеро": return "krivoe-ozero";
-            case "Николаев": return "nikolaev_106";
             case "Новая Одесса": return "novaya-odessa";
             case "Новый Буг": return "novyybug";
             case "Очаков": return "ochakov";
             case "Снигиревка": return "snigirevka";
-            case "Южноукраинск": return "yuzhnoukrainsk";
 
             case "Ананьев": return "ananev";
             case "Арциз": return "artsiz";
@@ -496,7 +498,6 @@ class JSONRequireObject {
             case "Теплодар": return "teplodar";
             case "Ширяево": return "shiryaevo";
             case "Южное": return "yuzhnoe";
-
 
             case "Гадяч": return "gadyach";
             case "Глобино": return "globino";
@@ -525,7 +526,6 @@ class JSONRequireObject {
             case "Червонозаводское": return "chervonozavodskoe";
             case "Чутово": return "chutovo";
 
-
             case "Березне": return "berezne";
             case "Вараш": return "varash";
             case "Владимирец": return "vladimirets";
@@ -541,7 +541,6 @@ class JSONRequireObject {
             case "Острог": return "ostrog";
             case "Радивилов": return "radivilov";
             case "Ровно": return "rovno";
-            case "Рокитное": return "rokitnoe_699";
             case "Сарны": return "sarny";
 
             case "Ахтырка": return "akhtyrka";
@@ -586,8 +585,6 @@ class JSONRequireObject {
             case "Чертков": return "chertkov";
             case "Шумск": return "shumsk";
 
-
-
             case "Балаклея": return "balakleya";
             case "Барвенково": return "barvenkovo";
             case "Богодухов": return "bogodukhov";
@@ -609,8 +606,6 @@ class JSONRequireObject {
             case "Харьков": return "kharkov";
             case "Чугуев": return "chuguev";
 
-
-
             case "Антоновка": return "antonovka";
             case "Белозерка": return "belozerka";
             case "Берислав": return "berislav";
@@ -630,7 +625,6 @@ class JSONRequireObject {
             case "Таврийск": return "tavriysk";
             case "Херсон": return "kherson";
             case "Чаплинка": return "chaplinka";
-            
 
             case "Виньковцы": return "vinkovtsy";
             case "Волочиск": return "volochisk";
@@ -669,8 +663,6 @@ class JSONRequireObject {
             case "Чернобай": return "chernobay";
             case "Чигирин": return "chigirin";
             case "Шпола": return "shpola";
-
-
 
             case "Бахмач": return "bakhmach";
             case "Бобровица": return "bobrovitsa";
