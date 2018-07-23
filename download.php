@@ -5,7 +5,7 @@
     $file = $_SESSION['name'];
     $arr =  $_SESSION['array'];
     
-    function file_force_download($file) {
+    /*function file_force_download($file) {
       if (file_exists($file)) {
         header('Content-Description: File Transfer');
         header('Content-Type: application/octet-stream');
@@ -20,7 +20,7 @@
            window.close();
             </script>');
         }
-    }
+    }*/
      getExcel('Blablabla', $arr);
     //file_force_download($file);
 ?>
